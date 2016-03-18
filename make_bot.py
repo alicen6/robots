@@ -1,31 +1,41 @@
 from sys import exit
 import random
-import PIL
+from PIL import Image, ImageDraw
+
 
 # make your robot character
 
+bot_builder = Image.new("RGB", (150, 150), "white")
+
+
 print "The first step to building your robot is to choose a body."
 print "Is your robot plain, does it have buttons, or a screen?"
-robot_body = raw_input("plain, buttons, or screen")
+robot_body = raw_input("plain, buttons, or screen: ")
 
 
 def bot_body():
     if robot_body == "plain":
-        # append image?
-        pass
+        plain = Image.open('/Users/alicen/git/robots/bot_parts/body_plain.jpg')
+        bot_builder.paste(plain, (50, 50))
+        bot_builder.save("my_bot.jpeg")
         print "Now it's time to select a head."
         bot_head()
     elif robot_body == "buttons":
-        pass
+        buttons = Image.open('/Users/alicen/git/robots/bot_parts/body_buttons.jpg')
+        bot_builder.paste(buttons, (50, 50))
+        bot_builder.save("my_bot.jpeg")
         print "Now it's time to select a head."
         bot_head()
     elif robot_body == "screen":
-        pass
+        screen = Image.open('/Users/alicen/git/robots/bot_parts/body_screen.jpg')
+        bot_builder.paste(screen, (50, 50))
+        bot_builder.save("my_bot.jpeg")
         print "Now it's time to select a head."
         bot_head()
     else:
         print "That is not an option, please try again."
-        bot_body()
+        # bot_body()
+        exit(0)
 
 
 def bot_head():
@@ -53,3 +63,9 @@ def bot_arms():
     robot_use = raw_input("select one")
 
     if robot_use == "fight":
+        pass
+    else:
+        pass
+
+
+bot_body()
