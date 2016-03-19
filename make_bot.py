@@ -10,7 +10,8 @@ bot_builder = Image.new("RGB", (150, 150), "white")
 
 print "The first step to building your robot is to choose a body."
 print "Is your robot plain, does it have buttons, or a screen?"
-robot_body = raw_input("plain, buttons, or screen: ")
+body_input = raw_input("plain, buttons, or screen: ")
+robot_body = body_input.lower()
 
 
 def bot_body():
@@ -44,7 +45,8 @@ def bot_head():
     add_head = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
     print "The options are as follows:"
     print "Dome, square, round, tube, or T-shaped"
-    robot_head = raw_input("select one: ")
+    head_input = raw_input("select one: ")
+    robot_head = head_input.lower()
 
     if robot_head == "dome":
         dome = Image.open('/Users/alicen/git/robots/bot_parts/head_dome.jpg')
@@ -81,11 +83,14 @@ def bot_head():
 def bot_arms():
     print "Does your robot fight or help?"
     robot_use = raw_input("select one: ")
-    robot_arms = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
+    arms_input = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
+    robot_arms = arms_input.lower()
 
     if robot_use == "fight":
         print "What weapon does your bot use?"
-        weapon = raw_input("Gun, knife, chainsaw, mace, or lasers: ")
+        weapon_input = raw_input("Gun, knife, chainsaw, mace, or lasers: ")
+        weapon = weapon_input.lower()
+
         if weapon == "gun":
             gun = Image.open(
                 '/Users/alicen/git/robots/bot_parts/weapon_gun.jpg')
@@ -121,7 +126,8 @@ def bot_arms():
             bot_arms()
     elif robot_use == "help":
         print "How does your robot help?"
-        bot_help = raw_input("Disastor relief, medicine, or protection: ")
+        help_input = raw_input("Disastor relief, medicine, or protection: ")
+        bot_help = help_input.lower()
         if bot_help == "disastor relief":
             disastor = Image.open(
                 '/Users/alicen/git/robots/bot_parts/help_disastor.jpg')
@@ -151,7 +157,8 @@ def bot_arms():
 def bot_legs():
     print "How does your robot get around?"
     move = raw_input("Wheels, tank treads, floating, or legs: ")
-    bot_legs = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
+    legs_input = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
+    bot_legs = legs_input.lower()
 
     if move == "wheels":
         wheels = Image.open(
