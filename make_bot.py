@@ -8,13 +8,12 @@ from PIL import Image, ImageDraw
 bot_builder = Image.new("RGB", (150, 150), "white")
 
 
-print "The first step to building your robot is to choose a body."
-print "Is your robot plain, does it have buttons, or a screen?"
-body_input = raw_input("plain, buttons, or screen: ")
-robot_body = body_input.lower()
-
-
 def bot_body():
+    print "The first step to building your robot is to choose a body."
+    print "Is your robot plain, does it have buttons, or a screen?"
+    body_input = raw_input("plain, buttons, or screen: ")
+    robot_body = body_input.lower()
+
     if robot_body == "plain":
         plain = Image.open('/Users/alicen/git/robots/bot_parts/body_plain.jpg')
         bot_builder.paste(plain, (50, 50))
@@ -180,5 +179,50 @@ def bot_legs():
     else:
         print "That is not an option, please try again."
         bot_legs()
+
+
+def show_bot():
+    print "You have finished building your bot."
+    print "Would you like to see it?"
+    show_input = raw_input("yes or no: ")
+    display_bot = show_input.lower()
+
+    final_bot = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
+
+    if display_bot == "yes":
+        final_bot.show()
+        final_confirmation()
+    elif display_bot == "no":
+        print "Would you like to start over?"
+        restart_input = raw_input("yes or no: ")
+        restart_choice = restart_input.lower()
+
+        if restart_choice == "yes":
+            bot_body()
+        elif restart_choice == "no":
+            final_confirmation()
+        else:
+            print "That is not an option, please try again."
+            show_bot()
+    else:
+        print "That is not an option, please try again."
+        show_bot()
+
+
+def final_confirmation():
+    print "Are you happy with your robot?"
+    conf_input = raw_input("yes or no?: ")
+    confirmation = conf_input.lower()
+
+    if confirmation == "yes":
+        # exit to main game thing or stat builder?
+        pass
+    elif confirmation == "no":
+        print "Okay, you can start over."
+        bot_body()
+    else:
+        print "That is not an option, please try again."
+        final_confirmation()
+
 
 bot_body()
