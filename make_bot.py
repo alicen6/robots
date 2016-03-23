@@ -43,7 +43,7 @@ def bot_body():
 def bot_head():
     add_head = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
     print "The options are as follows:"
-    print "Dome, square, round, tube, or T-shaped"
+    print "Dome, square, round, or tube"
     head_input = raw_input("select one: ")
     robot_head = head_input.lower()
 
@@ -68,12 +68,6 @@ def bot_head():
         add_head.paste(tube, (50, 0))
         add_head.save("my_bot.jpeg")
         bot_arms()
-    elif robot_head == "T-shaped":
-        tshaped = Image.open(
-            '/Users/alicen/git/robots/bot_parts/head_tshaped.jpg')
-        add_head.paste(tshaped, (50, 0))
-        add_head.save("my_bot.jpeg")
-        bot_arms()
     else:
         print "That is not an option, please try again."
         bot_head()
@@ -81,9 +75,9 @@ def bot_head():
 
 def bot_arms():
     print "Does your robot fight or help?"
-    robot_use = raw_input("select one: ")
-    arms_input = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
-    robot_arms = arms_input.lower()
+    use_input = raw_input("select one: ")
+    robot_arms = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
+    robot_use = use_input.lower()
 
     if robot_use == "fight":
         print "What weapon does your bot use?"
@@ -93,7 +87,10 @@ def bot_arms():
         if weapon == "gun":
             gun = Image.open(
                 '/Users/alicen/git/robots/bot_parts/weapon_gun.jpg')
+            gun_left = Image.open(
+                '/Users/alicen/git/robots/bot_parts/weapon_gun_left.jpg')
             robot_arms.paste(gun, (0, 0))
+            robot_arms.paste(gun_left, (100, 0))
             robot_arms.save("my_bot.jpeg")
             bot_legs()
         elif weapon == "knife":
@@ -105,7 +102,10 @@ def bot_arms():
         elif weapon == "chainsaw":
             chainsaw = Image.open(
                 '/Users/alicen/git/robots/bot_parts/weapon_chainsaw.jpg')
+            chainsaw_left = Image.open(
+                '/Users/alicen/git/robots/bot_parts/weapon_chainsaw_left.jpg')
             robot_arms.paste(chainsaw, (0, 0))
+            robot_arms.paste(chainsaw_left, (100, 0))
             robot_arms.save("my_bot.jpeg")
             bot_legs()
         elif weapon == "mace":
@@ -169,8 +169,8 @@ def bot_legs():
         bot_legs.paste(tank, (50, 100))
         bot_legs.save("my_bot.jpeg")
     elif move == "floating":
-        float = Image.open('/Users/alicen/git/robots/bot_parts/legs_float.jpg')
-        bot_legs.paste(float, (50, 100))
+        floating = Image.open('/Users/alicen/git/robots/bot_parts/legs_float.jpg')
+        bot_legs.paste(floating, (50, 100))
         bot_legs.save("my_bot.jpeg")
     elif move == "legs":
         legs = Image.open('/Users/alicen/git/robots/bot_parts/legs_legs.jpg')
@@ -186,7 +186,6 @@ def show_bot():
     print "Would you like to see it?"
     show_input = raw_input("yes or no: ")
     display_bot = show_input.lower()
-
     final_bot = Image.open('/Users/alicen/git/robots/my_bot.jpeg')
 
     if display_bot == "yes":
